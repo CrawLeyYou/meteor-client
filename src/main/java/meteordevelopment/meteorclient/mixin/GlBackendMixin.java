@@ -5,13 +5,13 @@
 
 package meteordevelopment.meteorclient.mixin;
 
+import com.mojang.blaze3d.opengl.GlDevice;
 import com.mojang.blaze3d.systems.RenderPass;
 import meteordevelopment.meteorclient.mixininterface.IGpuDevice;
-import net.minecraft.client.gl.GlBackend;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 
-@Mixin(GlBackend.class)
+@Mixin(GlDevice.class)
 public abstract class GlBackendMixin implements IGpuDevice {
     @Unique
     private int x, y, width, height;

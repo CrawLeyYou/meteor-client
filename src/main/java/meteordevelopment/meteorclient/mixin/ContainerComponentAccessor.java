@@ -5,14 +5,14 @@
 
 package meteordevelopment.meteorclient.mixin;
 
-import net.minecraft.component.type.ContainerComponent;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.core.NonNullList;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.ItemContainerContents;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
-@Mixin(ContainerComponent.class)
+@Mixin(ItemContainerContents.class)
 public interface ContainerComponentAccessor {
-    @Accessor("stacks")
-    DefaultedList<ItemStack> meteor$getStacks();
+    @Accessor("items")
+    NonNullList<ItemStack> meteor$getStacks();
 }

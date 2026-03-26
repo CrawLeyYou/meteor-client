@@ -5,13 +5,13 @@
 
 package meteordevelopment.meteorclient.mixin;
 
-import net.minecraft.client.render.ProjectionMatrix2;
+import net.minecraft.client.renderer.CachedOrthoProjectionMatrixBuffer;
 import org.joml.Matrix4f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Invoker;
 
-@Mixin(ProjectionMatrix2.class)
+@Mixin(CachedOrthoProjectionMatrixBuffer.class)
 public interface ProjectionMatrix2Accessor {
-    @Invoker("getMatrix")
+    @Invoker("createProjectionMatrix")
     Matrix4f meteor$callGetMatrix(float width, float height);
 }

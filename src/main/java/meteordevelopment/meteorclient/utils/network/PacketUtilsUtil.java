@@ -5,9 +5,9 @@
 
 package meteordevelopment.meteorclient.utils.network;
 
-import net.minecraft.network.packet.BundlePacket;
-import net.minecraft.network.packet.BundleSplitterPacket;
-import net.minecraft.network.packet.Packet;
+import net.minecraft.network.protocol.BundleDelimiterPacket;
+import net.minecraft.network.protocol.BundlePacket;
+import net.minecraft.network.protocol.Packet;
 import org.reflections.Reflections;
 import org.reflections.scanners.Scanners;
 
@@ -77,7 +77,7 @@ public class PacketUtilsUtil {
             );
             writer.newLine();
             processPackets(writer, "net.minecraft.network.packet.s2c", "S2C_PACKETS", "S2C_PACKETS_R",
-                packet -> BundlePacket.class.isAssignableFrom(packet) || BundleSplitterPacket.class.isAssignableFrom(packet)
+                packet -> BundlePacket.class.isAssignableFrom(packet) || BundleDelimiterPacket.class.isAssignableFrom(packet)
             );
 
             writer.write("    }\n\n");
