@@ -9,7 +9,8 @@ import com.llamalad7.mixinextras.injector.ModifyReceiver;
 import com.llamalad7.mixinextras.sugar.Local;
 import meteordevelopment.meteorclient.utils.tooltip.MeteorTooltipData;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -24,7 +25,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-@Mixin(value = GuiGraphics.class)
+@Mixin(value = GuiGraphicsExtractor.class)
 public abstract class DrawContextMixin {
     @Inject(method = "setTooltipForNextFrame(Lnet/minecraft/client/gui/Font;Ljava/util/List;Ljava/util/Optional;IILnet/minecraft/resources/Identifier;)V", at = @At(value = "INVOKE", target = "Ljava/util/Optional;ifPresent(Ljava/util/function/Consumer;)V", shift = At.Shift.BEFORE))
     private void onDrawTooltip(Font textRenderer, List<Component> text, Optional<TooltipComponent> data, int x, int y, @Nullable Identifier texture, CallbackInfo info, @Local(ordinal = 1) List<ClientTooltipComponent> list) {
